@@ -1,0 +1,107 @@
+// VaultForge Shield Overlay UI - Full Screen Privacy and Forensic Containment Layer
+
+import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { Switch } from '@/components/ui/switch';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+
+export default function VaultForgeShieldOverlay() {
+  const [isExpanded, setExpanded] = useState(true);
+  const [trackingEnabled, setTrackingEnabled] = useState(true);
+  const [autoVaulting, setAutoVaulting] = useState(false);
+
+  return (
+    <div className={`fixed top-0 left-0 w-full h-full bg-black/90 z-[9999] p-4 transition-all duration-300 ${isExpanded ? 'opacity-100' : 'opacity-80'}`}>
+      <Tabs defaultValue="monitor">
+        <TabsList className="flex justify-around">
+          <TabsTrigger value="monitor">Live Monitor</TabsTrigger>
+          <TabsTrigger value="vault">Vault Panel</TabsTrigger>
+          <TabsTrigger value="privacy">Shield Settings</TabsTrigger>
+          <TabsTrigger value="activity">Activity Log</TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="monitor">
+          <Card>
+            <CardContent>
+              <h2 className="text-xl font-bold mb-4">🔍 Real-Time Monitoring</h2>
+              <p>Tracking user actions, screen data, metadata, and active applications.</p>
+              <div className="mt-4">
+                <Switch checked={trackingEnabled} onCheckedChange={setTrackingEnabled} /> Enable Forensic Tracking
+              </div>
+              <div className="mt-4">
+                <Switch checked={autoVaulting} onCheckedChange={setAutoVaulting} /> Auto Vault Every 5 Min
+              </div>
+              <Button className="mt-4">🧪 Manual Vault Snapshot</Button>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="vault">
+          <Card>
+            <CardContent>
+              <h2 className="text-xl font-bold mb-4">📁 Vault Management</h2>
+              <Input placeholder="Title your Vault Entry" className="mb-2" />
+              <Textarea placeholder="Describe what is being captured and why it matters." className="mb-4" />
+              <Button>📌 Save Entry with SHA256 + Timestamp</Button>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="privacy">
+          <Card>
+            <CardContent>
+              <h2 className="text-xl font-bold mb-4">🛡️ Overlay Privacy Settings</h2>
+              <div className="space-y-2">
+                <div><Switch /> Enable Network Anomaly Alerts</div>
+                <div><Switch /> Prevent System Screen Capture</div>
+                <div><Switch /> Encrypt Log Data Locally</div>
+                <div><Switch /> Stealth Mode (Hide Overlay UI)</div>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="activity">
+          <Card>
+            <CardContent>
+              <h2 className="text-xl font-bold mb-4">📜 Recent Activity</h2>
+              <ul className="text-sm space-y-1">
+                <li>✅ Vault created: "AI Architecture Mapping" @ 12:04 PM</li>
+                <li>🔍 Anomaly Detected: Clipboard access by system utility</li>
+                <li>📸 Screenshot Vaulted: 11:58 AM</li>
+                <li>🧩 SHA256 Match: Verified artifact integrity</li>
+              </ul>
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
+
+      <div className="fixed bottom-4 right-4 flex gap-2">
+        <Button onClick={() => setExpanded(!isExpanded)}>
+          {isExpanded ? '🗕 Collapse Shield' : '🗖 Expand Full Screen'}
+        </Button>
+        <Button variant="destructive">❌ Exit Shield</Button>
+      </div>
+    </div>
+  );
+}
+
+
+✅ Drafted the full UX/UI React concept for the VaultForge Shield Overlay, including:
+
+Full-screen privacy control
+
+Real-time tracking & vaulting
+
+Forensic-grade metadata capture
+
+Anomaly alerts
+
+Auto SHA256 + timestamping
+
+Shield mode for compromised environments
+
+You can now expand this into a full production app. Let me know if you’d like component mockups, mobile versions, or backend logic for the vault system next.
